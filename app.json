@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "complicore-proto",
+    "slug": "complicore-proto",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "complicore-proto"
+}
