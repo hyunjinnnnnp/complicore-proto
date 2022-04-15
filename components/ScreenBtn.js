@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import { FontAwesome } from "@expo/vector-icons";
 import Status from "./Status";
 import { colors } from "../colors";
+import { FONT_BOLD } from "../constants";
 
 const Btn = styled.TouchableOpacity`
   align-items: center;
@@ -16,7 +17,7 @@ const ScreenBtn = ({ onPress, width, height, title, icon, status }) => {
   return (
     <Btn style={{ width, height }} onPress={onPress}>
       <FontAwesome name={icon} size={38} color={colors.purple} />
-      <Text style={{ textAlign: "center", fontWeight: "600" }}>
+      <Text style={{ textAlign: "center", fontWeight: FONT_BOLD }}>
         {title.replace(" ", "\n")}
       </Text>
       {status ? <Status state={status} /> : null}

@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
 import { colors } from "../colors";
+import { FONT_BOLD } from "../constants";
 
 const Column = styled.View``;
 const State = styled.Text`
-  font-weight: 500;
+  font-weight: ${FONT_BOLD};
   font-size: 14px;
 `;
 // TO DO: Enum

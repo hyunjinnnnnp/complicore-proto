@@ -17,8 +17,10 @@ const Stack = () => {
         },
         headerTitleAlign: "center",
         headerTitleStyle: {
-          fontSize: 24,
-          fontWeight: "300",
+          fontSize: 22,
+          // fontWeight: "200",
+          // letterSpacing: 10,
+          // TO DO : not working
         },
         headerBackVisible: false,
         headerBackTitleVisible: false,

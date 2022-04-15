@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { Text, FlatList } from "react-native";
 import { colors } from "../colors";
 import ScreenBtn from "../components/ScreenBtn";
+import { FONT_BOLD } from "../constants";
 
 const Container = styled.View`
   flex: 1;
@@ -63,10 +64,16 @@ const Home = ({ navigation: { navigate } }) => {
     <Container>
       <Header>
         <Text style={{ fontSize: 30, fontWeight: "500" }}>Hello, John</Text>
-        <Text style={{ fontSize: 16, fontWeight: "500", marginVertical: 10 }}>
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: FONT_BOLD,
+            marginVertical: 10,
+          }}
+        >
           Valued Driver Since 2017
         </Text>
-        <Text style={{ fontWeight: "500" }}>
+        <Text style={{ fontWeight: FONT_BOLD }}>
           Provider Name: Med Transport Services
         </Text>
       </Header>

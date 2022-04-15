@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { colors } from "../colors";
+import { FONT_BOLD } from "../constants";
 
 const Item = styled.View`
   border: 0.5px solid ${colors.gray};
@@ -23,7 +24,7 @@ const SmallText = styled(Text)`
   line-height: 10px;
 `;
 const BoldText = styled.Text`
-  font-weight: 800;
+  font-weight: ${FONT_BOLD};
   padding: 5px 10px;
 `;
 const DrivingLicenseItem = ({
