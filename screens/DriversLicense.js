@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { View } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "../colors";
+import DrivingLicenseItem from "../components/DrivingLicenseItem";
 
 const Container = styled.View`
   background-color: white;
@@ -19,31 +21,7 @@ const LicenseDetail = styled.View`
   flex: 1;
   border: 0.5px solid ${colors.gray};
 `;
-const DetailRow = styled.View`
-  flex: 1;
-  flex-direction: row;
-  border: 0.5px solid ${colors.gray};
-  align-items: center;
-`;
-const LightText = styled.Text`
-  flex: 1;
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  line-height: 25px;
-  padding: 5px 10px;
-`;
-const SmallText = styled.Text`
-  flex: 1;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1.2px;
-  line-height: 20px;
-  padding: 5px 10px;
-`;
-const BoldText = styled.Text`
-  font-weight: 800;
-`;
+
 const ConfirmBtn = styled.TouchableOpacity`
   flex: 0.2;
   background-color: ${colors.purple};
@@ -57,53 +35,67 @@ const BtnText = styled.Text`
   font-size: 20px;
 `;
 
-const DriversLicense = () => (
-  <Container>
-    <ImageContainer>
-      <Image source={require("../license.png")} resizeMode="contain" />
-    </ImageContainer>
-    <LicenseDetail>
-      <DetailRow>
-        <LightText>DL: {`\n`}123456789</LightText>
-        <LightText>Exp: {`\n`}07/11/2025</LightText>
-        <LightText>Class: {`\n`}C</LightText>
-      </DetailRow>
-      <DetailRow>
-        <LightText>First Name: {`\n`}John</LightText>
-        <LightText>Last Name: {`\n`}Doe</LightText>
-      </DetailRow>
-      <DetailRow>
-        <SmallText>
-          <BoldText>Address:</BoldText> {`\n`}0123 Anystreet, Anytown, CA012345
-        </SmallText>
-      </DetailRow>
-      <DetailRow>
-        <SmallText>
-          <BoldText>DOB:</BoldText> {`\n`}09/05/1993
-        </SmallText>
-        <SmallText>
-          <BoldText>Sex:</BoldText> {`\n`}Male
-        </SmallText>
-        <SmallText>
-          <BoldText>Hair:</BoldText> {`\n`}BRN
-        </SmallText>
-      </DetailRow>
-      <DetailRow>
-        <SmallText>
-          <BoldText>Eyes:</BoldText> {`\n`}BLUE
-        </SmallText>
-        <SmallText>
-          <BoldText>Height:</BoldText> {`\n`}6'0"
-        </SmallText>
-        <SmallText>
-          <BoldText>Issued:</BoldText> {`\n`}07/11/2015
-        </SmallText>
-      </DetailRow>
-    </LicenseDetail>
-    <ConfirmBtn>
-      <BtnText>CONFIRM</BtnText>
-    </ConfirmBtn>
-  </Container>
-);
+const DRIVERS_DATA = {
+  DL: "123456789",
+  Exp: "07/11/2025",
+  Class: "C",
+  FirstName: "John",
+  LastName: "Doe",
+  Address: "0123 Anystreet, Anytown, CA012345",
+  DOB: "09/05/1993",
+  Sex: "Male",
+  Hair: "BRN",
+  Eyes: "BLUE",
+  Height: `6'0"`,
+  Issued: "07/11/2015",
+};
+
+const DriversLicense = () => {
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [containerHeight, setContainerHeight] = useState(0);
+  return (
+    <Container>
+      <ImageContainer>
+        <Image source={require("../license.png")} resizeMode="contain" />
+      </ImageContainer>
+      <LicenseDetail
+        onLayout={(e) => {
+          const {
+            nativeEvent: {
+              layout: { width, height },
+            },
+          } = e;
+          setContainerWidth(width);
+          setContainerHeight(height);
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            flex: 1,
+            flexWrap: "wrap",
+          }}
+        >
+          {Object.entries(DRIVERS_DATA).map((data, index) => {
+            const [title, content] = data;
+            return (
+              <DrivingLicenseItem
+                title={title}
+                content={content}
+                key={index}
+                index={index}
+                containerWidth={containerWidth}
+                containerHeight={containerHeight}
+              />
+            );
+          })}
+        </View>
+      </LicenseDetail>
+      <ConfirmBtn>
+        <BtnText>CONFIRM</BtnText>
+      </ConfirmBtn>
+    </Container>
+  );
+};
 
 export default DriversLicense;

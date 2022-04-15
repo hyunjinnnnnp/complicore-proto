@@ -12,13 +12,13 @@ const Text = styled.Text`
   color: ${(props) =>
     props.state === "Expired"
       ? colors.red
-      : "Pending"
+      : props.state === "Pending"
       ? colors.yellow
-      : "Approved"
+      : props.state === "Approved"
       ? colors.green
-      : "In Progress"
+      : props.state === "In Progress"
       ? colors.yellow
-      : "none"};
+      : colors.black};
 `;
 
 const Status = ({ state }) => (

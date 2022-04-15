@@ -16,15 +16,15 @@ const Header = styled.View`
 const ScreenBtnWrapper = styled.View`
   flex: 2.5;
   border-color: ${colors.gray};
-  border-top-width: 1px;
-  border-bottom-width: 1px;
+  border-top-width: 0.5px;
+  border-bottom-width: 0.5px;
 `;
 
 const EmptySpace = styled.View`
   flex: 1;
 `;
 
-const DATA = [
+const flatListContentsData = [
   {
     title: "Drivers License",
     icon: "id-card-o",
@@ -81,7 +81,7 @@ const Home = ({ navigation: { navigate } }) => {
             setContainerHeight(height);
             setContainerWidth(width);
           }}
-          data={DATA}
+          data={flatListContentsData}
           renderItem={({ item }) => (
             <ScreenBtn
               onPress={() => {
