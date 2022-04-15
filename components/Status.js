@@ -6,7 +6,7 @@ import { FONT_BOLD } from "../constants";
 const Column = styled.View``;
 const State = styled.Text`
   font-weight: ${FONT_BOLD};
-  font-size: 14px;
+  font-size: 12px;
 `;
 // TO DO: Enum
 const Text = styled.Text`

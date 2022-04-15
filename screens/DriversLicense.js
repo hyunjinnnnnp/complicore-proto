@@ -19,20 +19,25 @@ const Image = styled.Image`
 `;
 const LicenseDetail = styled.View`
   flex: 1;
-  border: 0.5px solid ${colors.gray};
 `;
-
+const ConfirmView = styled.View`
+  flex: 0.4;
+  border-color: ${colors.gray};
+  border-top-width: 0.5px;
+  align-items: center;
+  justify-content: center;
+`;
 const ConfirmBtn = styled.TouchableOpacity`
-  flex: 0.2;
+  width: 80%;
+  height: 50%;
   background-color: ${colors.purple};
-  margin: 25px 30px;
   align-items: center;
   justify-content: center;
 `;
 const BtnText = styled.Text`
   color: ${colors.white};
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 const DRIVERS_DATA = {
@@ -71,8 +76,8 @@ const DriversLicense = () => {
       >
         <View
           style={{
-            flexDirection: "row",
             flex: 1,
+            flexDirection: "row",
             flexWrap: "wrap",
           }}
         >
@@ -91,9 +96,11 @@ const DriversLicense = () => {
           })}
         </View>
       </LicenseDetail>
-      <ConfirmBtn>
-        <BtnText>CONFIRM</BtnText>
-      </ConfirmBtn>
+      <ConfirmView>
+        <ConfirmBtn>
+          <BtnText>CONFIRM</BtnText>
+        </ConfirmBtn>
+      </ConfirmView>
     </Container>
   );
 };

@@ -2,7 +2,7 @@ import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
 import * as Font from "expo-font";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Feather } from "@expo/vector-icons";
 import { Asset } from "expo-asset";
 import Stack from "./Stack";
 
@@ -11,6 +11,7 @@ export default function App() {
   const onFinish = () => setReady(true);
   const startLoading = async () => {
     await Font.loadAsync(FontAwesome.font);
+    await Font.loadAsync(Feather.font);
     await Asset.loadAsync(require("./license.png"));
   };
   if (!ready) {

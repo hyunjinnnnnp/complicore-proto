@@ -1,8 +1,9 @@
 import React from "react";
+import { Platform } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import DriversLicense from "./screens/DriversLicense";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Feather } from "@expo/vector-icons";
 import Home from "./screens/Home";
 
 const NativeStack = createNativeStackNavigator();
@@ -14,22 +15,19 @@ const Stack = () => {
       screenOptions={{
         headerStyle: {
           fontSize: 50,
+          elevation: 0,
         },
-        headerTitleAlign: "center",
+        headerShadowVisible: false,
+        headerTitleAlign: "center", //for android
         headerTitleStyle: {
-          fontSize: 22,
-          // fontWeight: "200",
-          // letterSpacing: 10,
-          // TO DO : not working
+          fontSize: Platform.OS === "ios" ? 24 : 22,
+          fontFamily:
+            Platform.OS === "ios" ? "Apple SD Gothic Neo" : "sans-serif",
         },
         headerBackVisible: false,
         headerBackTitleVisible: false,
         headerLeft: () => (
-          <FontAwesome
-            name="close"
-            size={28}
-            onPress={() => navigation.goBack()}
-          />
+          <Feather name="x" size={28} onPress={() => navigation.goBack()} />
         ),
       }}
     >
@@ -37,7 +35,7 @@ const Stack = () => {
         name="COMPLICORE"
         component={Home}
         options={{
-          headerLeft: () => <FontAwesome name="bars" size={40} />,
+          headerLeft: () => <FontAwesome name="bars" size={30} />,
         }}
       />
       <NativeStack.Screen

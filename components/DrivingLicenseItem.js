@@ -1,31 +1,30 @@
 import styled from "styled-components/native";
 import { colors } from "../colors";
-import { FONT_BOLD } from "../constants";
 
 const Item = styled.View`
-  border: 0.5px solid ${colors.gray};
+  background-color: white;
   flex: 1;
-  justify-content: center;
+  justify-content: space-evenly;
+  border-color: ${colors.gray};
+  border-top-width: 0.5px;
+  border-right-width: 0.5px;
 `;
-
 const Text = styled.Text`
-  font-weight: 500;
-  padding: 5px 10px;
+  font-weight: 600;
+  padding: 0 10px;
 `;
-
 const LightText = styled(Text)`
   font-size: 15px;
   letter-spacing: 1.5px;
-  line-height: 15px;
 `;
 const SmallText = styled(Text)`
   font-size: 14px;
   letter-spacing: 1.2px;
-  line-height: 10px;
 `;
 const BoldText = styled.Text`
-  font-weight: ${FONT_BOLD};
-  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 10px;
 `;
 const DrivingLicenseItem = ({
   title,
@@ -36,10 +35,10 @@ const DrivingLicenseItem = ({
 }) => {
   const flexBasis =
     index === 3 || index === 4
-      ? containerWidth / 2 - 1
+      ? containerWidth / 2 - 2
       : index === 5
-      ? containerWidth - 1
-      : containerWidth / 3 - 1;
+      ? containerWidth
+      : containerWidth / 3 - 2;
   const height = containerHeight / 5;
 
   return (

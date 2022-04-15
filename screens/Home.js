@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Text, FlatList, Platform, View } from "react-native";
 import styled from "styled-components/native";
-import { Text, FlatList } from "react-native";
 import { colors } from "../colors";
 import ScreenBtn from "../components/ScreenBtn";
 import { FONT_BOLD } from "../constants";
@@ -16,15 +16,14 @@ const Header = styled.View`
 `;
 const ScreenBtnWrapper = styled.View`
   flex: 2.5;
-  border-color: ${colors.gray};
-  border-top-width: 0.5px;
-  border-bottom-width: 0.5px;
+  border: 1px solid ${colors.gray};
 `;
-
+const ScreenBg = styled.View`
+  background-color: ${colors.gray};
+`;
 const EmptySpace = styled.View`
   flex: 1;
 `;
-
 const flatListContentsData = [
   {
     title: "Drivers License",
@@ -63,7 +62,14 @@ const Home = ({ navigation: { navigate } }) => {
   return (
     <Container>
       <Header>
-        <Text style={{ fontSize: 30, fontWeight: "500" }}>Hello, John</Text>
+        <Text
+          style={{
+            fontSize: 24,
+            fontWeight: Platform.OS === "ios" ? "300" : "700",
+          }}
+        >
+          Hello, John
+        </Text>
         <Text
           style={{
             fontSize: 16,
@@ -79,6 +85,7 @@ const Home = ({ navigation: { navigate } }) => {
       </Header>
       <ScreenBtnWrapper>
         <FlatList
+          scrollEnabled={false}
           onLayout={(e) => {
             const {
               nativeEvent: {
@@ -89,19 +96,30 @@ const Home = ({ navigation: { navigate } }) => {
             setContainerWidth(width);
           }}
           data={flatListContentsData}
-          renderItem={({ item }) => (
-            <ScreenBtn
-              onPress={() => {
-                if (item.title === "Drivers License") {
-                  navigate("DriversLicense");
-                }
+          ItemSeparatorComponent={() => (
+            <View
+              style={{
+                width: containerWidth,
+                height: 1,
+                backgroundColor: colors.gray,
               }}
-              width={containerWidth / 2}
-              height={containerHeight / 3}
-              title={item.title}
-              icon={item.icon}
-              status={item.status}
             />
+          )}
+          renderItem={({ item }) => (
+            <ScreenBg>
+              <ScreenBtn
+                onPress={() => {
+                  if (item.title === "Drivers License") {
+                    navigate("DriversLicense");
+                  }
+                }}
+                width={containerWidth / 2}
+                height={containerHeight / 3}
+                title={item.title}
+                icon={item.icon}
+                status={item.status}
+              />
+            </ScreenBg>
           )}
           keyExtractor={(_, index) => index}
           numColumns={2}
