@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Text, FlatList, Platform, View } from "react-native";
+import { Text, FlatList, Platform } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "../colors";
 import ScreenBtn from "../components/ScreenBtn";
-import { FONT_BOLD } from "../constants";
+import { fontPixel, pixelSizeVertical } from "../globalStyles";
 
 const Container = styled.View`
   flex: 1;
@@ -64,7 +64,7 @@ const Home = ({ navigation: { navigate } }) => {
       <Header>
         <Text
           style={{
-            fontSize: 24,
+            fontSize: fontPixel(24),
             fontWeight: Platform.OS === "ios" ? "300" : "700",
           }}
         >
@@ -72,14 +72,14 @@ const Home = ({ navigation: { navigate } }) => {
         </Text>
         <Text
           style={{
-            fontSize: 16,
-            fontWeight: FONT_BOLD,
-            marginVertical: 10,
+            fontSize: fontPixel(12),
+            fontWeight: Platform.OS === "ios" ? "500" : "700",
+            marginVertical: pixelSizeVertical(10),
           }}
         >
           Valued Driver Since 2017
         </Text>
-        <Text style={{ fontWeight: FONT_BOLD }}>
+        <Text style={{ fontWeight: Platform.OS === "ios" ? "500" : "700" }}>
           Provider Name: Med Transport Services
         </Text>
       </Header>
@@ -96,15 +96,6 @@ const Home = ({ navigation: { navigate } }) => {
             setContainerWidth(width);
           }}
           data={flatListContentsData}
-          ItemSeparatorComponent={() => (
-            <View
-              style={{
-                width: containerWidth,
-                height: 1,
-                backgroundColor: colors.gray,
-              }}
-            />
-          )}
           renderItem={({ item }) => (
             <ScreenBg>
               <ScreenBtn

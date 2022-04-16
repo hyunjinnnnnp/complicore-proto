@@ -22,8 +22,6 @@ const LicenseDetail = styled.View`
 `;
 const ConfirmView = styled.View`
   flex: 0.4;
-  border-color: ${colors.gray};
-  border-top-width: 0.5px;
   align-items: center;
   justify-content: center;
 `;
@@ -79,6 +77,8 @@ const DriversLicense = () => {
             flex: 1,
             flexDirection: "row",
             flexWrap: "wrap",
+            borderBottomColor: colors.gray,
+            borderBottomWidth: 0.5,
           }}
         >
           {Object.entries(DRIVERS_DATA).map((data, index) => {

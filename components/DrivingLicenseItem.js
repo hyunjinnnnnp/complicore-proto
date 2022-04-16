@@ -2,7 +2,6 @@ import styled from "styled-components/native";
 import { colors } from "../colors";
 
 const Item = styled.View`
-  background-color: white;
   flex: 1;
   justify-content: space-evenly;
   border-color: ${colors.gray};

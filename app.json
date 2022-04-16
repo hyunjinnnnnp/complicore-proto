@@ -2,11 +2,16 @@
   "expo": {
     "name": "complicore-proto",
     "slug": "complicore-proto",
+    "owner": "jinnnnn",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
-    "description": ""
+    "description": "",
+    "githubUrl": "https://github.com/hyunjinnnnnp/complicore-proto",
+    "ios": {
+      "bundleIdentifier": "org.name.complicoreproto"
+    }
   },
   "name": "complicore-proto"
 }
