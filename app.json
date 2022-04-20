@@ -8,7 +8,6 @@
       "**/*"
     ],
     "description": "",
-    "githubUrl": "https://github.com/hyunjinnnnnp/complicore-proto",
     "ios": {
       "bundleIdentifier": "org.name.complicoreproto"
     }

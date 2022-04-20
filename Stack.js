@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import DriversLicense from "./screens/DriversLicense";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 import Home from "./screens/Home";
+import TakePhoto from "./screens/TakePhoto";
 
 const NativeStack = createNativeStackNavigator();
 
@@ -42,6 +43,12 @@ const Stack = () => {
         name="DriversLicense"
         component={DriversLicense}
         options={{ title: "DRIVING LICENSE" }}
+      />
+      <NativeStack.Screen
+        name="TakePhoto"
+        component={TakePhoto}
+        options={{ headerShown: false }}
+        header
       />
     </NativeStack.Navigator>
   );
