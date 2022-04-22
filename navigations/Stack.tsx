@@ -2,10 +2,10 @@ import React from "react";
 import { Platform } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import DriversLicense from "./screens/DriversLicense";
+import DriversLicense from "../screens/DriversLicense";
 import { FontAwesome, Feather } from "@expo/vector-icons";
-import Home from "./screens/Home";
-import TakePhoto from "./screens/TakePhoto";
+import Home from "../screens/Home";
+import TakePhoto from "../screens/TakePhoto";
 import { RootStackParamList } from "./types";
 
 const NativeStack = createNativeStackNavigator<RootStackParamList>();

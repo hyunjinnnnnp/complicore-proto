@@ -60,7 +60,7 @@ const Box = styled.View`
 
 export default function TakePhoto() {
   const navigation = useNavigation();
-  const camera = useRef(null);
+  const camera = useRef<Camera | null>(null);
   const [cameraReady, setCameraReady] = useState(false);
   const [ok, setOk] = useState(false);
   const getPermissions = async () => {

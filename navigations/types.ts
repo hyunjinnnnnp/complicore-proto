@@ -11,9 +11,8 @@ export type HomeScreenProps = NativeStackScreenProps<
   "Home"
 >;
 
-export const enum DriversStatus {
-  Expired = "Expired",
-  Pending = "Pending",
-  Approved = "Approved",
-  InProgress = "In Progress",
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
 }

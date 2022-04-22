@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import * as Font from "expo-font";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 import { Asset } from "expo-asset";
-import Stack from "./Stack";
+import Stack from "./navigations/Stack";
 
 export default function App() {
   const [ready, setReady] = useState(false);

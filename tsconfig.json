@@ -3,8 +3,19 @@
     "jsx": "react",
     "checkJs": false,
     "allowJs": false,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "removeComments": true, //컴파일시 주석제거
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
   },
   "exclude": ["node_modules", "babel.config.js", "metro.config.js"],
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "target": "ES5",
+  "lib": ["es2015", "dom", "dom.iterable"] // js로 컴파일 할 때 포함될 라이브러리 목록
+  // ex) es2015 for Async/Promise.  dom for DOM API
 }

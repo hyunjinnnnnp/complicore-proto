@@ -3,7 +3,6 @@ import { Platform } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "../globalStyles";
 import { fontPixel } from "../globalStyles";
-import { DriversStatus } from "../types";
 
 const Column = styled.View``;
 const State = styled.Text`
@@ -11,21 +10,28 @@ const State = styled.Text`
   font-size: ${fontPixel(10)}px;
 `;
 
+const enum DriversStatus {
+  Expired = "Expired",
+  Pending = "Pending",
+  Approved = "Approved",
+  InProgress = "In Progress",
+}
+
 const Text = styled.Text<{ state: string }>`
-  color: ${({ state }) =>
-    state === DriversStatus.Expired
+  color: ${(props) =>
+    props.state === DriversStatus.Expired
       ? colors.red
-      : state === DriversStatus.Pending
+      : props.state === DriversStatus.Pending
       ? colors.yellow
-      : state === DriversStatus.Approved
+      : props.state === DriversStatus.Approved
       ? colors.green
-      : state === DriversStatus.InProgress
+      : props.state === DriversStatus.InProgress
       ? colors.yellow
       : colors.black};
 `;
 
 interface IStatusProps {
-  state?: string;
+  state: string;
 }
 
 export const Status: React.FC<IStatusProps> = ({ state }) => (

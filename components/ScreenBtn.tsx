@@ -21,7 +21,7 @@ interface IScreenBtnProps {
   height: number;
   title: string;
   icon: React.ComponentProps<typeof FontAwesome>["name"];
-  status: string;
+  status?: string;
 }
 
 const ScreenBtn: React.FC<IScreenBtnProps> = ({

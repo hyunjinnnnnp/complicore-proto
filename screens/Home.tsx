@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 import { colors } from "../globalStyles";
 import ScreenBtn from "../components/ScreenBtn";
 import { fontPixel, pixelSizeVertical } from "../globalStyles";
-import { HomeScreenProps } from "../types";
+import { HomeScreenProps } from "../navigations/types";
 
 const Container = styled.View`
   flex: 1;
@@ -26,7 +26,7 @@ const ScreenBg = styled.View`
 const EmptySpace = styled.View`
   flex: 1;
 `;
-// FLAT LIST -> View ?????? 가능쓰?? numColumns 대체 가능쓰?????
+
 interface IFlatListContent {
   title: string;
   icon: React.ComponentProps<typeof FontAwesome>["name"];
