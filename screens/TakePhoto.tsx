@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "react-native";
 import styled from "styled-components/native";
 import { EvilIcons } from "@expo/vector-icons";
-import { colors } from "../colors";
+import { colors } from "../globalStyles";
 
 const CAMERA_CONTAINER_PADDING = {
   vertical: 20,
@@ -60,7 +60,7 @@ const Box = styled.View`
 
 export default function TakePhoto() {
   const navigation = useNavigation();
-  const camera = useRef();
+  const camera = useRef(null);
   const [cameraReady, setCameraReady] = useState(false);
   const [ok, setOk] = useState(false);
   const getPermissions = async () => {

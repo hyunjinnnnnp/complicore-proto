@@ -6,18 +6,15 @@ import DriversLicense from "./screens/DriversLicense";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 import Home from "./screens/Home";
 import TakePhoto from "./screens/TakePhoto";
+import { RootStackParamList } from "./types";
 
-const NativeStack = createNativeStackNavigator();
+const NativeStack = createNativeStackNavigator<RootStackParamList>();
 
 const Stack = () => {
   const navigation = useNavigation();
   return (
     <NativeStack.Navigator
       screenOptions={{
-        headerStyle: {
-          fontSize: 50,
-          elevation: 0,
-        },
         headerShadowVisible: false,
         headerTitleAlign: "center", //for android
         headerTitleStyle: {
@@ -33,10 +30,11 @@ const Stack = () => {
       }}
     >
       <NativeStack.Screen
-        name="COMPLICORE"
+        name="Home"
         component={Home}
         options={{
           headerLeft: () => <FontAwesome name="bars" size={30} />,
+          title: "COMPLICORE",
         }}
       />
       <NativeStack.Screen
@@ -48,7 +46,6 @@ const Stack = () => {
         name="TakePhoto"
         component={TakePhoto}
         options={{ headerShown: false }}
-        header
       />
     </NativeStack.Navigator>
   );

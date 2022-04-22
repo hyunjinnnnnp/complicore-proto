@@ -1,5 +1,6 @@
+import React from "react";
 import styled from "styled-components/native";
-import { colors } from "../colors";
+import { colors } from "../globalStyles";
 
 const Item = styled.View`
   flex: 1;
@@ -25,13 +26,22 @@ const BoldText = styled.Text`
   font-weight: 700;
   padding: 0 10px;
 `;
+
+interface DrivingLicenseItemProps {
+  title: string;
+  content: string;
+  index: number;
+  containerWidth: number;
+  containerHeight: number;
+}
+
 const DrivingLicenseItem = ({
   title,
   content,
   index,
   containerWidth,
   containerHeight,
-}) => {
+}: DrivingLicenseItemProps) => {
   const flexBasis =
     index === 3 || index === 4
       ? containerWidth / 2 - 2

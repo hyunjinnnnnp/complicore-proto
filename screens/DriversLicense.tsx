@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import styled from "styled-components/native";
-import { colors } from "../colors";
+import { colors } from "../globalStyles";
 import DrivingLicenseItem from "../components/DrivingLicenseItem";
 
 const Container = styled.View`

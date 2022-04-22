@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Text, FlatList, Platform } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 import styled from "styled-components/native";
-import { colors } from "../colors";
+import { colors } from "../globalStyles";
 import ScreenBtn from "../components/ScreenBtn";
 import { fontPixel, pixelSizeVertical } from "../globalStyles";
+import { HomeScreenProps } from "../types";
 
 const Container = styled.View`
   flex: 1;
@@ -24,7 +26,14 @@ const ScreenBg = styled.View`
 const EmptySpace = styled.View`
   flex: 1;
 `;
-const flatListContentsData = [
+// FLAT LIST -> View ?????? 가능쓰?? numColumns 대체 가능쓰?????
+interface IFlatListContent {
+  title: string;
+  icon: React.ComponentProps<typeof FontAwesome>["name"];
+  status?: string;
+}
+
+const flatListContentsData: IFlatListContent[] = [
   {
     title: "Drivers License",
     icon: "id-card-o",
@@ -55,7 +64,7 @@ const flatListContentsData = [
   },
 ];
 
-const Home = ({ navigation: { navigate } }) => {
+const Home = ({ navigation: { navigate } }: HomeScreenProps) => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
 
@@ -112,7 +121,7 @@ const Home = ({ navigation: { navigate } }) => {
               />
             </ScreenBg>
           )}
-          keyExtractor={(_, index) => index}
+          keyExtractor={(_, index) => index.toString()}
           numColumns={2}
         />
       </ScreenBtnWrapper>

@@ -1,29 +1,34 @@
 import React from "react";
 import { Platform } from "react-native";
 import styled from "styled-components/native";
-import { colors } from "../colors";
+import { colors } from "../globalStyles";
 import { fontPixel } from "../globalStyles";
+import { DriversStatus } from "../types";
 
 const Column = styled.View``;
 const State = styled.Text`
   font-weight: ${Platform.OS === "ios" ? "600" : "700"};
   font-size: ${fontPixel(10)}px;
 `;
-// TO DO: Enum
-const Text = styled.Text`
-  color: ${(props) =>
-    props.state === "Expired"
+
+const Text = styled.Text<{ state: string }>`
+  color: ${({ state }) =>
+    state === DriversStatus.Expired
       ? colors.red
-      : props.state === "Pending"
+      : state === DriversStatus.Pending
       ? colors.yellow
-      : props.state === "Approved"
+      : state === DriversStatus.Approved
       ? colors.green
-      : props.state === "In Progress"
+      : state === DriversStatus.InProgress
       ? colors.yellow
       : colors.black};
 `;
 
-const Status = ({ state }) => (
+interface IStatusProps {
+  state?: string;
+}
+
+export const Status: React.FC<IStatusProps> = ({ state }) => (
   <Column>
     <State>
       Status: <Text state={state}>{state}</Text>

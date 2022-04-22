@@ -1,5 +1,15 @@
 import { Dimensions, PixelRatio } from "react-native";
 
+export const colors = {
+  red: "#c0392b",
+  yellow: "#f39c12",
+  green: "#2ecc71",
+  purple: "#322D86",
+  gray: "#bdc3c7",
+  black: "#1e272e",
+  white: "white",
+};
+
 const BASIC_DIMENSIONS = {
   width: 347,
   height: 620,
@@ -11,28 +21,32 @@ export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } =
 const widthBaseScale = SCREEN_WIDTH / BASIC_DIMENSIONS.width;
 const heightBaseScale = SCREEN_HEIGHT / BASIC_DIMENSIONS.height;
 
-const normalize = (size, base = "width") => {
+interface normalize {
+  (size: number, base?: string): number;
+}
+
+const normalize: normalize = (size, base = "width") => {
   const newSize =
     base === "height" ? size * heightBaseScale : size * widthBaseScale;
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
 };
 
-export const widthPixel = (size) => {
+export const widthPixel: normalize = (size) => {
   return normalize(size, "width");
 };
 
-export const heightPixel = (size) => {
+export const heightPixel: normalize = (size) => {
   return normalize(size, "height");
 };
 
-export const fontPixel = (size) => {
+export const fontPixel: normalize = (size) => {
   return heightPixel(size);
 };
 
-export const pixelSizeVertical = (size) => {
+export const pixelSizeVertical: normalize = (size) => {
   return heightPixel(size);
 };
 
-export const pixelSizeHorizontal = (size) => {
+export const pixelSizeHorizontal: normalize = (size) => {
   return widthPixel(size);
 };

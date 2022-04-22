@@ -3,7 +3,7 @@ import { Text, Platform } from "react-native";
 import styled from "styled-components/native";
 import { FontAwesome } from "@expo/vector-icons";
 import Status from "./Status";
-import { colors } from "../colors";
+import { colors } from "../globalStyles";
 import { pixelSizeVertical } from "../globalStyles";
 
 const Btn = styled.TouchableOpacity`
@@ -15,7 +15,23 @@ const Btn = styled.TouchableOpacity`
   margin-bottom: 1px;
 `;
 
-const ScreenBtn = ({ onPress, width, height, title, icon, status }) => {
+interface IScreenBtnProps {
+  onPress: () => void;
+  width: number;
+  height: number;
+  title: string;
+  icon: React.ComponentProps<typeof FontAwesome>["name"];
+  status: string;
+}
+
+const ScreenBtn: React.FC<IScreenBtnProps> = ({
+  onPress,
+  width,
+  height,
+  title,
+  icon,
+  status,
+}) => {
   return (
     <Btn style={{ width, height }} onPress={onPress}>
       <FontAwesome name={icon} size={30} color={colors.purple} />
