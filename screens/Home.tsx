@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, FlatList, Platform } from "react-native";
+import { FlatList, Platform } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import styled from "styled-components/native";
 import { colors } from "../globalStyles";
@@ -16,9 +16,24 @@ const Header = styled.View`
   justify-content: center;
   align-items: center;
 `;
-const ScreenBtnWrapper = styled.View`
+const Greeting = styled.Text`
+  font-size: ${fontPixel(20)}px;
+  font-weight: ${Platform.OS === "ios" ? "300" : "700"};
+`;
+const Validation = styled.Text`
+  font-size: ${fontPixel(10)}px;
+  font-weight: ${Platform.OS === "ios" ? "500" : "700"};
+  margin: ${pixelSizeVertical(10)}px 0;
+`;
+const Provider = styled.Text`
+  font-weight: ${Platform.OS === "ios" ? "500" : "700"};
+`;
+const ScreenWrapper = styled.View`
   flex: 2.5;
-  border: 1px solid ${colors.gray};
+  border-top-color: ${colors.gray};
+  border-top-width: 1px;
+  border-bottom-color: ${colors.gray};
+  border-bottom-width: 1px;
 `;
 const ScreenBg = styled.View`
   background-color: ${colors.gray};
@@ -71,29 +86,14 @@ const Home = ({ navigation: { navigate } }: HomeScreenProps) => {
   return (
     <Container>
       <Header>
-        <Text
-          style={{
-            fontSize: fontPixel(24),
-            fontWeight: Platform.OS === "ios" ? "300" : "700",
-          }}
-        >
-          Hello, John
-        </Text>
-        <Text
-          style={{
-            fontSize: fontPixel(12),
-            fontWeight: Platform.OS === "ios" ? "500" : "700",
-            marginVertical: pixelSizeVertical(10),
-          }}
-        >
-          Valued Driver Since 2017
-        </Text>
-        <Text style={{ fontWeight: Platform.OS === "ios" ? "500" : "700" }}>
-          Provider Name: Med Transport Services
-        </Text>
+        <Greeting>Hello, John</Greeting>
+        <Validation>Valued Driver Since 2017</Validation>
+        <Provider>Provider Name: Med Transport Services</Provider>
       </Header>
-      <ScreenBtnWrapper>
+      <ScreenWrapper>
         <FlatList
+          // style={{ backgroundColor: colors.gray }}
+          // RESPONSIVE WEB ???
           scrollEnabled={false}
           onLayout={(e) => {
             const {
@@ -124,7 +124,7 @@ const Home = ({ navigation: { navigate } }: HomeScreenProps) => {
           keyExtractor={(_, index) => index.toString()}
           numColumns={2}
         />
-      </ScreenBtnWrapper>
+      </ScreenWrapper>
       <EmptySpace />
     </Container>
   );

@@ -39,7 +39,7 @@ const TakePhotoBtnContainer = styled.View`
 const Btn = styled.TouchableOpacity`
   width: 55px;
   height: 55px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: ${colors.lightGray};
   border: 1px solid ${colors.purple};
   border-radius: 50px;
   align-items: center;
@@ -58,7 +58,7 @@ const Box = styled.View`
   height: 80px;
 `;
 
-export default function TakePhoto() {
+const TakePhoto = () => {
   const navigation = useNavigation();
   const camera = useRef<Camera | null>(null);
   const [cameraReady, setCameraReady] = useState(false);
@@ -149,4 +149,6 @@ export default function TakePhoto() {
       </TakePhotoBtnContainer>
     </Container>
   );
-}
+};
+
+export default TakePhoto;

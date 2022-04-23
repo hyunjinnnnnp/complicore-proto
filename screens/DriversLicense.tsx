@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { View } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "../globalStyles";
 import DrivingLicenseItem from "../components/DrivingLicenseItem";
 
-const Container = styled.View`
+const Wrapper = styled.View`
   background-color: white;
   flex: 1;
 `;
@@ -17,15 +16,19 @@ const Image = styled.Image`
   width: 90%;
   height: 100%;
 `;
-const LicenseDetail = styled.View`
+const ItemsContainer = styled.View`
   flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom-color: ${colors.gray};
+  border-bottom-width: 0.5px;
 `;
-const ConfirmView = styled.View`
+const Confirm = styled.View`
   flex: 0.4;
   align-items: center;
   justify-content: center;
 `;
-const ConfirmBtn = styled.TouchableOpacity`
+const Btn = styled.TouchableOpacity`
   width: 80%;
   height: 50%;
   background-color: ${colors.purple};
@@ -57,11 +60,11 @@ const DriversLicense = () => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
   return (
-    <Container>
+    <Wrapper>
       <ImageContainer>
         <Image source={require("../license.png")} resizeMode="contain" />
       </ImageContainer>
-      <LicenseDetail
+      <ItemsContainer
         onLayout={(e) => {
           const {
             nativeEvent: {
@@ -72,36 +75,26 @@ const DriversLicense = () => {
           setContainerHeight(height);
         }}
       >
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            flexWrap: "wrap",
-            borderBottomColor: colors.gray,
-            borderBottomWidth: 0.5,
-          }}
-        >
-          {Object.entries(DRIVERS_DATA).map((data, index) => {
-            const [title, content] = data;
-            return (
-              <DrivingLicenseItem
-                title={title}
-                content={content}
-                key={index}
-                index={index}
-                containerWidth={containerWidth}
-                containerHeight={containerHeight}
-              />
-            );
-          })}
-        </View>
-      </LicenseDetail>
-      <ConfirmView>
-        <ConfirmBtn>
+        {Object.entries(DRIVERS_DATA).map((data, index) => {
+          const [title, content] = data;
+          return (
+            <DrivingLicenseItem
+              title={title}
+              content={content}
+              key={index}
+              index={index}
+              containerWidth={containerWidth}
+              containerHeight={containerHeight}
+            />
+          );
+        })}
+      </ItemsContainer>
+      <Confirm>
+        <Btn>
           <BtnText>CONFIRM</BtnText>
-        </ConfirmBtn>
-      </ConfirmView>
-    </Container>
+        </Btn>
+      </Confirm>
+    </Wrapper>
   );
 };
 

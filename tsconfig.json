@@ -1,21 +1,15 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "checkJs": false,
-    "allowJs": false,
-    "noImplicitAny": true,
-    "removeComments": true, //컴파일시 주석제거
     "strict": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
+    "noImplicitAny": true, // any 허용 안함
+    "removeComments": true, //컴파일시 주석제거
     "noImplicitThis": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "noEmit": true, // 최종 결과물 없음. 단순 타입 체크 용.
+    "target": "esnext",
+    "lib": ["es2015"] // js로 컴파일 할 때 포함될 라이브러리 목록
+    // es2015 for Async/Promise.  dom for DOM API
   },
   "exclude": ["node_modules", "babel.config.js", "metro.config.js"],
-  "extends": "expo/tsconfig.base",
-  "target": "ES5",
-  "lib": ["es2015", "dom", "dom.iterable"] // js로 컴파일 할 때 포함될 라이브러리 목록
-  // ex) es2015 for Async/Promise.  dom for DOM API
+  "extends": "expo/tsconfig.base"
 }
